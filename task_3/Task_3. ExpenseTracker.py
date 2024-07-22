@@ -1,7 +1,7 @@
 import json
 
 # expenses_list is a list and it has multiple dictionaries with each dictionary about a specific purchase
-budget = 10000
+budget = 20000
 
 def load_data():
     try:
@@ -25,7 +25,7 @@ def add_expense(expense_list):
     quantity = input("quantity : ")
     cost = int(input("cost (₹): "))    
 
-    expense_list.append({'item' : item, 'quantity' : 'x'+quantity, 'cost' : cost, 'section' : type_of_item })
+    expense_list.append({'item' : item, 'quantity' : quantity, 'cost' : cost, 'section' : type_of_item })
     # print(expense_list)
     save_data(expense_list)
 
