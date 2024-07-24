@@ -20,7 +20,7 @@ def display_board(board, attempts):
     print('-------------')
     print(board[6]+'|'+board[7]+'|'+board[8] +'|'+board[9]+'|'+board[10])
 
-    print(f" \n Attempts remaining : {attempts - 1}")
+    print(" \n Attempts remaining : " + attempts - 1)
     
     
 
@@ -57,7 +57,7 @@ def compare_guess(guess, answer, the_board, attempts):
 
 def main():
     answer = choose_word()
-    attempts = 2
+    attempts = 3
 
     print(f"welcome to wordle, guess the {len(answer)} letter word")
     print("The top row shows the letters")
@@ -73,14 +73,17 @@ def main():
             print("Congratulations! You've guessed the word correctly!")
             break
 
+        elif attempts == 0: 
+            print("Sorry attempts over")
+            print(f"Correct ans was '{answer}'")
+
         else :
             compare_guess(guess, answer, the_board, attempts)
             
+            
+        attempts = attempts - 1
+
         
-        attempts -= 1
-    
-    print("Sorry attempts over")
-    print(f"Correct ans was '{answer}'")
 
 if __name__ == "__main__":
     main()

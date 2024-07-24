@@ -20,7 +20,7 @@ def save_data(expense_list):
         json.dump(expense_list, file)
 
 def add_expense(expense_list):
-    type_of_item = input ("Enter type : \n Outside Food(f), \n Groceries(g), \n House items(h), \n shopping(s) \n - ")
+    type_of_item = input ("Enter type : \n Outside Food(f), \n Groceries(g), \n House items(h), \n shopping(s) \n , \n gaming(game) ")
     item = input("Item : ")
     quantity = input("quantity : ")
     cost = int(input("cost (₹): "))    
@@ -33,7 +33,7 @@ def delete_expense(expense_list):
     view_list(expense_list)
     index = int(input("Enter the number you wish to delete : "))
 
-    if 1<= index <= len(expense_list):
+    if 1 <= index <= len(expense_list):
         del expense_list[index - 1]
         save_data(expense_list)
 
@@ -44,8 +44,11 @@ def edit_expense(expense_list):
     view_list(expense_list)
     index = int(input("Enter the number you wish to edit : "))
 
-    if 1<= index <= len(expense_list):
-        type_of_item = input ("Enter new type : \n Food(f), \n Groceries(g), \n House items(h), \n shopping(s) \n - ")
+    if 1 <= index <= len(expense_list):
+        # type_of_item =
+       
+        type_of_item = expense_list[index - 1]["section"]
+            
         item = input("new item : ")
         quantity = input("it's quantity : ")
         cost = int(input("it's cost (₹) : "))
@@ -94,6 +97,7 @@ def category_wise_spent(expense_list):
     groceries_cost = 0
     house_items_cost = 0
     shopping_cost = 0
+    gaming_cost = 0
     for expense in expense_list:
         for key,value in expense.items():
             if value == "f":
@@ -107,11 +111,17 @@ def category_wise_spent(expense_list):
             
             elif value == "s" :
                 shopping_cost += (expense['cost'] * int(expense['quantity']))
+            
+            elif value == "game" :
+                gaming_cost += (expense['cost'] * int(expense['quantity']))
+    
     
     print(f"cost for outside food is {food_cost}")
     print(f"cost for groceries is {groceries_cost}")
     print(f"cost for house_items is {house_items_cost}")
     print(f"cost for shopping is {shopping_cost}")
+    print(f"cost for gaming is {gaming_cost}")
+
 
 
 
